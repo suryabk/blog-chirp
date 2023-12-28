@@ -6,6 +6,7 @@ import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
+import SecondaryButton from "@/Components/SecondaryButton";
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -79,7 +80,7 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="block mt-4">
+                <div className="flex flex-col-reverse sm:flex-row sm:justify-between gap-1 mt-4">
                     <label className="flex items-center">
                         <Checkbox
                             name="remember"
@@ -90,25 +91,24 @@ export default function Login({ status, canResetPassword }) {
                             Remember me
                         </span>
                     </label>
-                </div>
-
-                <div className="flex items-center justify-between mt-4">
-                    <Link
-                        href={route("register")}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Don't have account?
-                    </Link>
                     {canResetPassword && (
                         <Link
                             href={route("password.request")}
-                            className="ml-4 underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="underline -mt-2 sm:mt-0 mb-2 sm:mb-0 text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             Forgot your password?
                         </Link>
                     )}
+                </div>
 
-                    <PrimaryButton className="ml-4" disabled={processing}>
+                <div className="flex items-center justify-between sm:justify-end mt-4 gap-2">
+                    <a href={route("register")}>
+                        <SecondaryButton>Register</SecondaryButton>
+                    </a>
+                    <PrimaryButton
+                        className="justify-center"
+                        disabled={processing}
+                    >
                         Log in
                     </PrimaryButton>
                 </div>
