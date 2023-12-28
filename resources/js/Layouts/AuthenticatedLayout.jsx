@@ -17,7 +17,11 @@ export default function Authenticated({ auth, header, children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <img className="h-14 w-28" src="images/logo.svg" alt="" />
+                                    <img
+                                        className="h-14 w-28"
+                                        src="images/logo.svg"
+                                        alt=""
+                                    />
                                 </Link>
                             </div>
 
@@ -27,6 +31,12 @@ export default function Authenticated({ auth, header, children }) {
                                     active={route().current("dashboard")}
                                 >
                                     Dashboard
+                                </NavLink>
+                                <NavLink
+                                    href={route("chirps.index")}
+                                    active={route().current("chirps.index")}
+                                >
+                                    Chirps
                                 </NavLink>
                             </div>
                         </div>
@@ -131,6 +141,12 @@ export default function Authenticated({ auth, header, children }) {
                             active={route().current("dashboard")}
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route("chirps.index")}
+                            active={route().current("chirps.index")}
+                        >
+                            Chirps
                         </ResponsiveNavLink>
                     </div>
 
